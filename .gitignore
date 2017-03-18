@@ -9,6 +9,9 @@ coverage
 # production
 build
 
+#bootstrap
+public/dist
+
 # misc
 .DS_Store
 .env
