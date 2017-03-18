@@ -1,0 +1,6 @@
+export const SELECT_TARGET = "SELECT_TARGET",
+export const ADD_QUESTION = "ADD_QUESTION",
+export const ADD_CHOICE = "ADD_CHOICE",
+export const REMOVE_CHOICE = "REMOVE_CHOICE",
+export const REMOVE_QUESTION = "REMOVE_QUESTION"
+
