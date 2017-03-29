@@ -1,23 +1,24 @@
 import React from 'react'
+import { Link } from "react-router"
 
- const SurveyItem = (props) => {
+const SurveyItem = (props) => {
     let view = () => {
         let {visible} = props.survey;
 
         if (visible === true) {
-            return <a><span className="glyphicon glyphicon-signal">Results</span></a>
+            return <Link to={'/view/' + props.survey._id}><span className="glyphicon glyphicon-signal">Results</span></Link>
         }
         else {
             return null;
         }
     }
     return (
-        <li className="col-md-12 notAvailable">
+        <li className="col-md-12 available">
             <div className="SurveyListItem">
                 {props.survey.pollDescription}
                 <div className="pull-right">
                     {view()}
-                    <a className="delete" href={props.survey._id}><span className="glyphicon glyphicon-calendar">Vote</span></a>
+                    <Link to={"/vote/" + props.survey._id}><span className="glyphicon glyphicon-calendar">Vote</span></Link>
                 </div>
             </div>
         </li>

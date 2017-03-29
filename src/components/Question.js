@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react"
+import React from "react"
 import Choice from "./Choice";
 import { FormGroup, InputGroup, ControlLabel, Col, FormControl, Glyphicon, Button } from "react-bootstrap"
 
@@ -9,19 +9,21 @@ const Question = (props) => {
     }
     let removeQuestion = (e) => {
         let que = Number(e.target.id);
-        
+
         props.qd(que)
         console.log(e.target)
     }
     let updateQuestion = (e) => {
         let que = Number(e.target.id);
-        let value=e.target.value;
-        props.qu(que,value)
+        let value = e.target.value;
+        props.qu(que, value)
     }
-    let ques = props.choices.map(choice => {
-        let ki = `${choice.id} ${choice.q}`
+
+    let ques = props.choices.map((choice, index) => {
+        let key = `${props.index}-${index}`
         return (
-            <Choice key={ki} id={choice.id} cd={props.cd} ci={props.ci} text={choice.text} pl={choice.placeholder} q={choice.q} />
+            <Choice key={key} cd={props.cd} index={index} question={props.index}
+                ci={props.ci} text={choice.text} />
         )
     })
     return (
@@ -30,29 +32,30 @@ const Question = (props) => {
                 <div className="question">
                     <FormGroup bsSize="small" style={{ paddingBottom: "1.5em" }}>
                         <Col md={2} lg={2} >
-                            <ControlLabel>Question{' '} {props.id + 1}</ControlLabel>
+                            <ControlLabel>Question{' '} {props.index + 1}</ControlLabel>
                         </Col>
                         <Col md={10} lg={10} >
                             <InputGroup>
-                                <FormControl type="text" onChange={(e)=>updateQuestion(e)}
-                                    value={props.text} id={Number(props.id)} placeholder={props.pl} />
+                                <FormControl type="text" onChange={(e) => updateQuestion(e)}
+                                    value={props.text} id={String(props.index)}
+                                    placeholder={"Enter question number " + (props.index + 1)} />
                                 <InputGroup.Addon>
-                                    <Glyphicon glyph="trash" id={Number(props.id)} id={Number(props.id)}
-                                     onClick={(e)=>removeQuestion(e)} />
+                                    <Glyphicon glyph="trash" id={String(props.index)}
+                                        onClick={(e) => removeQuestion(e)} />
                                 </InputGroup.Addon>
                             </InputGroup>
                         </Col>
 
                     </FormGroup>
                     {ques}
-                    <Button bsSize="small" bsStyle="warning" id={Number(props.id)} onClick={(e)=>addChoice(e)}>
-                        <Glyphicon glyph="plus" />Add Another Choice</Button>
+                    <Button bsSize="small" bsStyle="info" id={Number(props.index)} onClick={(e) => addChoice(e)}>
+                        +Add Another Choice</Button>
                 </div>
             </form>
         </div>
     )
 
-    
+
 }
 
 

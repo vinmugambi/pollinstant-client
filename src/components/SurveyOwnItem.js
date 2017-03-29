@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { Link } from "react-router"
 
 const SurveyOwnItem = (props) => {
-let {available, _id, visible, pollDescription, totalParticipants}=props.survey;
+    let {available, _id, visible, pollDescription, totalParticipants} = props.survey;
     return (
         <li className="col-md-12">
             <div className={available === !false ? "available SurveyListItem" : "notAvailable SurveyListItem"} >
@@ -18,7 +18,7 @@ let {available, _id, visible, pollDescription, totalParticipants}=props.survey;
                         </div>
                         : <div>
 
-                            <a href={_id}><span className="glyphicon glyphicon-signal"></span>Results</a>
+                            <Link to={'/view/' + _id}><span className="glyphicon glyphicon-signal"></span>Results</Link>
                         </div>}
                     {visible === false && available === true ?
                         <a href={_id}><span className="glyphicon glyphicon-signal"></span>AvailResults</a> : null
@@ -27,6 +27,5 @@ let {available, _id, visible, pollDescription, totalParticipants}=props.survey;
             </div>
         </li>
     )
-    //}}
 }
 export default SurveyOwnItem;

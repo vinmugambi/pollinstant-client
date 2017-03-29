@@ -1,8 +1,8 @@
 import React from 'react'
 import SurveyOwnItem from "./SurveyOwnItem"
 //import { Link } from "react-router"
-import {Button} from 'react-bootstrap'
-import {browserHistory} from 'react-router'
+import { Button } from 'react-bootstrap'
+import { browserHistory } from 'react-router'
 
 const TableOwn = ({surveys}) => {
     let surveyOwnItem;
@@ -13,7 +13,7 @@ const TableOwn = ({surveys}) => {
             )
         })
     }
-    let navigateCreate=()=>{
+    let navigateCreate = () => {
         browserHistory.push('/create')
     }
 
